@@ -10,8 +10,37 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-const {flags} = require('@oclif/command')
+const Path = require('path');
+const fs = require('fs');
+const winston = require('winston');
+const mustache = require('mustache');
+
+const {flags} = require('@oclif/command');
+const {
+    DirectBinaryUploadOptions,
+    FileSystemUpload,
+} = require('@adobe/aem-upload');
+
 const BaseCommand = require('../../base-command');
+
+function getLogger(logFile) {
+    const { combine, timestamp, label, printf } = winston.format;
+    const myFormat = printf(({ level, message, label, timestamp }) => {
+        return `${timestamp} [${label}] ${level}: ${message}`;
+    });
+    const log = winston.createLogger({
+        format: combine(
+            label({ label: '' }),
+            timestamp(),
+            myFormat
+        ),
+        transports: [
+            new winston.transports.Console(),
+            new winston.transports.File({ filename: logFile })
+        ]
+    });
+    return log;
+}
 
 class UploadCommand extends BaseCommand {
     async doRun(args) {
@@ -25,8 +54,38 @@ class UploadCommand extends BaseCommand {
             }
         });
 
-        // TODO: process the upload
-        console.log('process upload using flags %s and files/folders %s', JSON.stringify(newFlags), JSON.stringify(argv));
+        const {
+            host,
+            credential,
+            target,
+            log: logFile,
+            output: htmlResult,
+            threads,
+        } = newFlags;
+
+        const uploadOptions = new DirectBinaryUploadOptions()
+            .withUrl(`${host}${target}`)
+            .withBasicAuth(credential)
+            .withMaxConcurrent(parseInt(threads, 10));
+
+        // setup logger
+        const log = getLogger(logFile);
+
+        // upload local folder
+        const fileUpload = new FileSystemUpload({ log });
+        fileUpload.upload(uploadOptions, argv).then((allUploadResult) => {
+                log.info('finished uploading files');
+                // generate html format result
+                let mstTemplate = fs.readFileSync(Path.join(__dirname, '../../../view/result.mst')).toString();
+                let htmlOutput = mustache.render(mstTemplate, allUploadResult.toJSON());
+                fs.writeFileSync(htmlResult, htmlOutput);
+                log.info(`Uploading result is saved to html file '${htmlResult}'`);
+            })
+            .catch(err => {
+                log.error('unhandled exception attempting to upload files', err);
+            });
+
+        log.info(`Log file is saved to log file '${logFile}'`);
     }
 }
 
@@ -69,11 +128,11 @@ The local path to where the process's metrics will be
 saved in html format.`,
         default: 'result-${timestamp}.html'
     }),
-    serial: flags.boolean({
-        char: 's',
-        description: `Upload serially
-Upload each file one after another instead of
-uploading multiple files at once.`
+    threads: flags.string({
+        char: 'r',
+        description: `Maximum threads
+Maximum number of files to upload concurrently.`,
+        default: 5,
     })
 })
 

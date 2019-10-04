@@ -2,14 +2,12 @@
 Plugin to Adobe I/O CLI for executing commands related to Adobe Experience Manager.
 
 <!-- toc -->
-- [Overview](#overview)
-- [Usage](#usage)
-- [Adding New Commands](#adding-new-commands)
-  - [Testing Commands](#testing-commands)
-- [Commands](#commands)
-  - [`aio-aem aem:upload FILES_FOLDERS`](#aio-aem-aemupload-filesfolders)
-- [Contributing](#contributing)
-- [Licensing](#licensing)
+* [Overview](#overview)
+* [Usage](#usage)
+* [Adding New Commands](#adding-new-commands)
+* [Commands](#commands)
+* [Contributing](#contributing)
+* [Licensing](#licensing)
 <!-- tocstop -->
 
 
@@ -98,9 +96,8 @@ OPTIONS
                                The local path to where the process's metrics will be
                                saved in html format.
 
-  -s, --serial                 Upload serially
-                               Upload each file one after another instead of
-                               uploading multiple files at once.
+  -r, --threads=threads        [default: 5] Maximum threads
+                               Maximum number of files to upload concurrently.
 
   -t, --target=target          [default: /content/dam/aem-upload-${timestamp}] Target AEM folder
                                The folder in the target AEM instance where asset
