@@ -15,11 +15,11 @@ Plugin to Adobe I/O CLI for executing commands related to Adobe Experience Manag
 To install the and use the command locally:
 <!-- usage -->
 ```sh-session
-$ npm install -g aio-cli-plugin-aem
+$ npm install -g @adobe/aio-cli-plugin-aem
 $ aio-aem COMMAND
 running command...
 $ aio-aem (-v|--version|version)
-aio-cli-plugin-aem/1.0.0 darwin-x64 node-v10.16.3
+@adobe/aio-cli-plugin-aem/1.0.0 darwin-x64 node-v10.16.3
 $ aio-aem --help [COMMAND]
 USAGE
   $ aio-aem COMMAND
@@ -123,6 +123,8 @@ EXAMPLES
   $ aio aem:upload myimage.jpg
   $ aio aem:upload -t http://myaeminstance -c admin:12345 myimage.jpg
 ```
+
+_See code: [src/commands/aem/upload.js](https://github.com/adobe/aio-cli-plugin-aem/blob/v1.0.0/src/commands/aem/upload.js)_
 <!-- commandsstop -->
 
 # Contributing

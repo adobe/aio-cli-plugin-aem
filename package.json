@@ -1,8 +1,14 @@
 {
-  "name": "aio-cli-plugin-aem",
+  "name": "@adobe/aio-cli-plugin-aem",
+  "description": "AEM-related plugins to Adobe I/O CLI",
   "version": "1.0.0",
+  "repository": "adobe/aio-cli-plugin-aem",
+  "author": "Adobe",
+  "contributors": [
+    "Mark Frisbey"
+  ],
   "dependencies": {
-    "@adobe/aem-upload": "^1.0.2",
+    "@adobe/aem-upload": "^1.0.3",
     "@adobe/aio-cna-core-config": "^1.0.14",
     "@oclif/command": "^1",
     "@oclif/config": "^1",
