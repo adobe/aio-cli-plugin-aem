@@ -157,7 +157,7 @@ Note that the process will only work with AEM instances that use basic
 
 UploadCommand.examples = [
     '$ aio aem:upload myimage.jpg',
-    '$ aio aem:upload -t http://myaeminstance -c admin:12345 myimage.jpg ',
+    '$ aio aem:upload -h http://myaeminstance -c admin:12345 myimage.jpg ',
 ]
 
 module.exports = {
