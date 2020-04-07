@@ -8,25 +8,25 @@
     "Mark Frisbey"
   ],
   "dependencies": {
-    "@adobe/aem-upload": "^1.0.3",
+    "@adobe/aem-upload": "1.0.10",
     "@oclif/command": "^1",
-    "@oclif/config": "^1",
+    "@oclif/config": "^1.14.0",
     "@oclif/errors": "^1.1.2",
     "debug": "^4.1.0",
-    "mustache": "^3.1.0",
+    "mustache": "^3.2.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.21.3",
-    "@oclif/plugin-help": "^2.1.4",
+    "@oclif/plugin-help": "^2.2.3",
     "@oclif/test": "^1",
-    "acorn": "^6.1.1",
+    "acorn": "^6.4.1",
     "chalk": "^2.4.1",
-    "codecov": "^3.2.0",
-    "eslint": "^6.0.1",
+    "codecov": "^3.6.5",
+    "eslint": "^6.8.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "22.9.0",
     "eslint-plugin-node": "^9.0.0",
     "eslint-plugin-promise": "^4.0.0",
@@ -35,7 +35,7 @@
     "jest-haste-map": "^24.5.0",
     "jest-junit": "^6.0.0",
     "jest-resolve": "^24.5.0",
-    "stdout-stderr": "^0.1.9"
+    "stdout-stderr": "^0.1.13"
   },
   "engines": {
     "node": ">=8.0.0"
