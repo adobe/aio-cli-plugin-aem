@@ -22,6 +22,7 @@ const {
 } = require('@adobe/aem-upload');
 
 const BaseCommand = require('../../base-command');
+const { trimRight } = require('../../utils');
 
 function getLogger(logFile) {
     const { combine, timestamp, label, printf } = winston.format;
@@ -64,7 +65,7 @@ class UploadCommand extends BaseCommand {
         } = newFlags;
 
         const uploadOptions = new DirectBinaryUploadOptions()
-            .withUrl(`${host}${target}`)
+            .withUrl(`${trimRight(host, ['/'])}${target}`)
             .withBasicAuth(credential)
             .withMaxConcurrent(parseInt(threads, 10));
 
