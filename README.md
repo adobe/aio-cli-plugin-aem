@@ -19,7 +19,7 @@ $ npm install -g @adobe/aio-cli-plugin-aem
 $ aio-aem COMMAND
 running command...
 $ aio-aem (-v|--version|version)
-@adobe/aio-cli-plugin-aem/1.0.3 darwin-x64 node-v10.16.3
+@adobe/aio-cli-plugin-aem/1.0.4 darwin-x64 node-v10.16.3
 $ aio-aem --help [COMMAND]
 USAGE
   $ aio-aem COMMAND
@@ -124,7 +124,7 @@ EXAMPLES
   $ aio aem:upload -h http://myaeminstance -c admin:12345 myimage.jpg
 ```
 
-_See code: [src/commands/aem/upload.js](https://github.com/adobe/aio-cli-plugin-aem/blob/v1.0.3/src/commands/aem/upload.js)_
+_See code: [src/commands/aem/upload.js](https://github.com/adobe/aio-cli-plugin-aem/blob/v1.0.4/src/commands/aem/upload.js)_
 <!-- commandsstop -->
 
 # Contributing
